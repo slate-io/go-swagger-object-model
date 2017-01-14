@@ -1,4 +1,4 @@
-package main
+package models
 
 type Schema struct {
 	Swagger             string                 `json:"swagger"`
@@ -115,7 +115,3 @@ type Tag struct {
 	Description  string                 `json:"description,omitempty"`
 	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty"`
 }
-
-// TODO: main entry point should NOT be required. Need to refer to the
-// documentation on how to structure sub packages.
-func main() {}
