@@ -38,18 +38,9 @@ type License struct {
 	Url  string `json:"url,omitempty"`
 }
 
-type Paths map[string]*PathItem
+type Paths map[string]PathItem
 
-type PathItem struct {
-	Get        *Operation `json:"get,omitempty"`
-	Put        *Operation `json:"put,omitempty"`
-	Post       *Operation `json:"post,omitempty"`
-	Delete     *Operation `json:"delete,omitempty"`
-	Options    *Operation `json:"options,omitempty"`
-	Head       *Operation `json:"head,omitempty"`
-	Patch      *Operation `json:"patch,omitempty"`
-	Parameters *Operation `json:"parameters,omitempty"`
-}
+type PathItem map[string]*Operation
 
 type Operation struct {
 	Tags         []string               `json:"tags,omitempty"`
