@@ -1,7 +1,7 @@
 package models
 
-type Schema struct {
-	Swagger             string                 `json:"swagger"`
+type RootDocument struct {
+	swagger             string                 `json:"-"`
 	Info                *Info                  `json:"info"`
 	Host                string                 `json:"host,omitempty"`
 	BasePath            string                 `json:"basePath,omitempty"`
@@ -9,7 +9,7 @@ type Schema struct {
 	Consumes            []string               `json:"consumes,omitempty"`
 	Produces            []string               `json:"produces,omitempty"`
 	Paths               Paths                  `json:"paths"`
-	Definitions         interface{}            `json:"definitions,omitempty"`
+	Definitions         Definitions            `json:"definitions,omitempty"`
 	Parameters          ParametersDefinitions  `json:"parameters,omitempty"`
 	Responses           ResponsesDefinitions   `json:"responses,omitempty"`
 	SecurityDefinitions SecurityDefinitions    `json:"securityDefinitions,omitempty"`
@@ -105,4 +105,47 @@ type Tag struct {
 	Name         string                 `json:"name"`
 	Description  string                 `json:"description,omitempty"`
 	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty"`
+}
+
+type Xml struct {
+	name      string `json:"name,omitempty"`
+	namespace string `json:"namespace,omitempty"`
+	prefix    string `json:"prefix,omitempty"`
+	attribute bool   `json:"attribute,omitempty"`
+	wrapped   bool   `json:"wrapped,omitempty"`
+}
+
+type Definitions map[string]*Schema
+
+type Schema struct {
+	Reference            string                 `json:"$ref,omitempty"`
+	Format               string                 `json:"format,omitempty"`
+	Title                string                 `json:title,omitempty"`
+	Description          string                 `json:"description,omitempty"`
+	Default              interface{}            `json:"default,omitempty"`
+	MultipleOf           uint64                 `json:"multipleOf,omitempty"`
+	Maximum              int64                  `json:"maximum,omitempty"`
+	ExclusiveMaximum     bool                   `json:"exclusiveMaximum,omitempty"`
+	Minimum              int64                  `json:"minimum,omitempty"`
+	ExclusiveMinimum     bool                   `json"exclusiveMinimum,omitempty"`
+	MaxLength            uint64                 `json:"maxLength,omitempty"`
+	MinLength            uint64                 `json:"minLength,omitempty"`
+	Pattern              string                 `json:"pattern,omitempty"`
+	MaxItems             uint64                 `json:"maxItems,omitempty"`
+	MinItems             uint64                 `json:"minItems,omitempty"`
+	UniqueItems          bool                   `json:"uniqueItems,omitempty"`
+	MaxProperties        uint64                 `json:"maxProperties,omitempty"`
+	MinProperties        uint64                 `json:"minProperties,omitempty"`
+	Required             []string               `json:"required,omitempty"`
+	Enum                 []interface{}          `json:"enum,omitempty"`
+	Type                 interface{}            `json:"type,omitempty"`
+	Items                interface{}            `json:"items,omitempty"`
+	AllOf                interface{}            `json:"allOf,omitempty"`
+	Properties           interface{}            `json:"properties,omitempty"`
+	AdditionalProperties interface{}            `json:"additionalProperties,omitempty"`
+	Discriminator        string                 `json:"discriminator,omitempty"`
+	ReadOnly             bool                   `json:"readOnly,omitempty"`
+	Xml                  *Xml                   `json:"xml,omitempty"`
+	ExternalDocs         *ExternalDocumentation `json:"externalDocs,omitempty"`
+	Example              interface{}            `json:"example,omitempty"`
 }
