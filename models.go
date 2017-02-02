@@ -127,14 +127,14 @@ type Definitions map[string]*Schema
 type Schema struct {
 	Reference            string                 `json:"$ref,omitempty"`
 	Format               string                 `json:"format,omitempty"`
-	Title                string                 `json:title,omitempty"`
+	Title                string                 `json:"title,omitempty"`
 	Description          string                 `json:"description,omitempty"`
 	Default              interface{}            `json:"default,omitempty"`
 	MultipleOf           uint64                 `json:"multipleOf,omitempty"`
 	Maximum              int64                  `json:"maximum,omitempty"`
 	ExclusiveMaximum     bool                   `json:"exclusiveMaximum,omitempty"`
 	Minimum              int64                  `json:"minimum,omitempty"`
-	ExclusiveMinimum     bool                   `json"exclusiveMinimum,omitempty"`
+	ExclusiveMinimum     bool                   `json:"exclusiveMinimum,omitempty"`
 	MaxLength            uint64                 `json:"maxLength,omitempty"`
 	MinLength            uint64                 `json:"minLength,omitempty"`
 	Pattern              string                 `json:"pattern,omitempty"`
