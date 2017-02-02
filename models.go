@@ -67,7 +67,7 @@ type ResponsesDefinitions map[string]*Response
 
 type Response struct {
 	Description string                 `json:"description"`
-	Schema      interface{}            `json:"schema,omitempty"`
+	Schema      *Schema                `json:"schema,omitempty"`
 	Headers     map[string]*Header     `json:"headers,omitempty"`
 	Examples    map[string]interface{} `json:"examples,omitempty"`
 }
