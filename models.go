@@ -61,8 +61,6 @@ type ExternalDocumentation struct {
 	Url         string `json:"url"`
 }
 
-type Parameter interface{}
-
 type ParametersDefinitions map[string]*Parameter
 
 type ResponsesDefinitions map[string]*Response
@@ -95,6 +93,15 @@ type SecurityScheme struct {
 	AuthorizationUrl string `json:"authorizationUrl,omitempty"`
 	TokenUrl         string `json:"tokenUrl,omitempty"`
 	Scopes           Scopes `json:"scopes,omitempty"`
+}
+
+type Parameter struct {
+	Name        string `json:"name,omitempty"`
+	In          string `json:"in,omitempty"`
+	Description string `json:"description,omitempty"`
+	Required    bool   `json:"required,omitempty"`
+	Type        string `json:"type,omitempty"`
+	Format      string `json:"format,omitempty"`
 }
 
 type Scopes map[string]string
