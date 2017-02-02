@@ -115,11 +115,11 @@ type Tag struct {
 }
 
 type Xml struct {
-	name      string `json:"name,omitempty"`
-	namespace string `json:"namespace,omitempty"`
-	prefix    string `json:"prefix,omitempty"`
-	attribute bool   `json:"attribute,omitempty"`
-	wrapped   bool   `json:"wrapped,omitempty"`
+	Name      string `json:"name,omitempty"`
+	Namespace string `json:"namespace,omitempty"`
+	Prefix    string `json:"prefix,omitempty"`
+	Attribute bool   `json:"attribute,omitempty"`
+	Wrapped   bool   `json:"wrapped,omitempty"`
 }
 
 type Definitions map[string]*Schema
