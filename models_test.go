@@ -2,7 +2,6 @@ package models
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"testing"
 )
@@ -16,5 +15,7 @@ func TestSwaggerObjectModel(t *testing.T) {
 	if err := json.Unmarshal(b, root); err != nil {
 		t.Error(err)
 	}
-	fmt.Printf("%#v\r\n", root)
+	if root.Definitions["Pet"].Properties["category"].GetReference() != "Category" {
+		t.Error()
+	}
 }

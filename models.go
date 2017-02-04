@@ -1,5 +1,9 @@
 package models
 
+import (
+	"strings"
+)
+
 type RootDocument struct {
 	swagger             string                 `json:"-"`
 	Info                *Info                  `json:"info"`
@@ -124,6 +128,8 @@ type Xml struct {
 
 type Definitions map[string]*Schema
 
+type Properties map[string]*Schema
+
 type Schema struct {
 	Reference            string                 `json:"$ref,omitempty"`
 	Format               string                 `json:"format,omitempty"`
@@ -148,11 +154,16 @@ type Schema struct {
 	Type                 interface{}            `json:"type,omitempty"`
 	Items                interface{}            `json:"items,omitempty"`
 	AllOf                interface{}            `json:"allOf,omitempty"`
-	Properties           interface{}            `json:"properties,omitempty"`
+	Properties           Properties             `json:"properties,omitempty"`
 	AdditionalProperties interface{}            `json:"additionalProperties,omitempty"`
 	Discriminator        string                 `json:"discriminator,omitempty"`
 	ReadOnly             bool                   `json:"readOnly,omitempty"`
 	Xml                  *Xml                   `json:"xml,omitempty"`
 	ExternalDocs         *ExternalDocumentation `json:"externalDocs,omitempty"`
 	Example              interface{}            `json:"example,omitempty"`
+}
+
+func (s *Schema) GetReference() string {
+	v := strings.Split(s.Reference, "/")
+	return v[len(v)-1]
 }
